@@ -1,2 +1,3 @@
-# ci-attacher
-calls an API from a CI system to trigger jobs from shell
+# ci-scripts
+
+Is a bunch of handy scripts for setting up GoCD for continous delivery and integration.
