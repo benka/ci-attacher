@@ -35,16 +35,16 @@ node index.js --db mongodb://$db_user:$db_password@$db_session --archive mongodb
 
 # ###################
 # AWS S3 COPY LOG
-echo "aws s3 cp ./$log s3://corespring-session-archiver/" | tee -a $log
-aws s3 cp ./$log s3://corespring-session-archiver/ | tee -a $log
+echo "aws s3 cp $log s3://corespring-session-archiver/" | tee -a $log
+aws s3 cp $log s3://corespring-session-archiver/
 
 # ###################
 # GIT CLONE CI-SCRIPTS
 cd ~
-git clone git@github.com:benka/ci-scripts.git | tee -a $log
+git clone git@github.com:benka/ci-scripts.git
 sudo chmod +x ./ci-scripts/misc/ci-trigger.sh
-./ci-scripts/misc/ci-trigger.sh | tee -a $log
+./ci-scripts/misc/ci-trigger.sh
 
 # ###################
 # TURN OFF EC2
-poweroff | tee -a $log
+poweroff
