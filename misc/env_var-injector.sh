@@ -18,5 +18,5 @@ echo "#env_var_array: [$env_var_array]"
 for i in ${env_var_array[@]} ; do
   add_env_var="export $i=$(eval echo \$$i)"
   echo $add_env_var
-  sed -i "1s|^#!/bin/bash|#!/bin/bash$add_env_var\n|" $target
+  sed -i "1s|^#!/bin/bash|#!/bin/bash\n$add_env_var\n|" $target
 done
