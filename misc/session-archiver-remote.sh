@@ -2,7 +2,7 @@
 
 # ###################
 # ENV VARS
-export log=session-archiver-$GO_PIPELINE_NAME-$GO_PIPELINE_COUNTER.log
+export log="~/$GO_PIPELINE_NAME-$GO_PIPELINE_COUNTER.log"
 
 echo "#user: [$db_user]" | tee -a $log
 echo "#pass: [$db_password]" | tee -a $log
@@ -40,6 +40,7 @@ aws s3 cp ./$log s3://corespring-session-archiver/ | tee -a $log
 
 # ###################
 # GIT CLONE CI-SCRIPTS
+cd ~
 git clone git@github.com:benka/ci-scripts.git | tee -a $log
 sudo chmod +x ./ci-scripts/misc/ci-trigger.sh
 ./ci-scripts/misc/ci-trigger.sh | tee -a $log
