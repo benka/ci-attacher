@@ -25,7 +25,7 @@ echo "#pwd: [$(pwd)]" | tee -a $log
 git clone git@github.com:corespring/session-archiver.git | tee -a $log
 cd session-archiver
 cp index.js index.js.bak
-cat index.js.bak | sed 's/var batchSize = 50/var batchSize = 10000/' | tee -a $log > index.js
+cat index.js.bak | sed 's/var batchSize = 50/var batchSize = 10000/' > index.js
 npm install | tee -a $log
 
 # ###################
