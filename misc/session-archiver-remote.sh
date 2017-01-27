@@ -30,8 +30,8 @@ npm install | tee -a $log
 
 # ###################
 # RUN SESSION ARCHIVER
-echo "node index.js --db mongodb://$db_user:$db_password@$db_session --archive mongodb://$db_user:$db_password@$db_session_archive $period" | tee -a $log
-node index.js --db mongodb://$db_user:$db_password@$db_session --archive mongodb://$db_user:$db_password@$db_session_archive $period | tee -a $log
+echo "node index.js --db mongodb://$db_user:$db_password@$db_session --archive mongodb://$db_user:$db_password@$db_session_archive --months $period" | tee -a $log
+node index.js --db mongodb://$db_user:$db_password@$db_session --archive mongodb://$db_user:$db_password@$db_session_archive --months $period | tee -a $log
 
 # ###################
 # AWS S3 COPY LOG
