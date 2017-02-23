@@ -1,5 +1,12 @@
 #!/bin/bash
 
+if [ "$1" == "" ] ; then
+  echo "please provide argument for your project's name"
+  echo "e.g.: ./ci-disk-cleanup.sh your_project_name"
+  echo "exiting..."
+  exit 1
+fi 
+
 echo "disk space before cleanup"
 df -h
 echo "-------------------------"
@@ -10,31 +17,25 @@ echo "- repositories checked out by build plans"
 echo "- build artifacts"
 echo "- docker images & containers"
 echo "- build locks"
-cd /var/lib/go-agent/pipelines
-rm -rf *
+cd /var/lib/go-agent/pipelines && rm -rf *
 cd ~
 echo "-------------------------"
 echo "-------------------------"
 echo "cleaning up CS-BUILDER:"
 echo "- locks"
-cd ~/.cs-builder/locks
-rm -rf *
+cd ~/.cs-builder/locks && rm -rf *
 
 echo "- repositories"
-cd ~/.cs-builder/repos/corespring
-rm -rf *
+cd ~/.cs-builder/repos/$1 && rm -rf *
 
 echo "- slugs"
-cd ~/.cs-builder/slugs
-rm -rf *
+cd ~/.cs-builder/slugs && rm -rf *
 
 echo "- artifacts"
-cd ~/.cs-builder/artifacts
-rm -rf *
+cd ~/.cs-builder/artifacts && rm -rf *
 
 echo "- binaries"
-cd ~/.cs-builder/binaries
-rm -rf *
+cd ~/.cs-builder/binaries && rm -rf *
 
 cd ~
 echo "-------------------------"
