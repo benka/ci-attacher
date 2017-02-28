@@ -2,7 +2,7 @@
 set -e
 
 . /var/go/.bashrc
-. $HOME/.corespring-scripts/go-build-scripts/common/env-check.sh 7
+. $HOME/.corespring-scripts/go-build-scripts/common/env-check.sh 7 corespring
 . $(rvm 2.2.4 do rvm env --path)
 
 GIT=$1
