@@ -1,7 +1,7 @@
 #!/bin/bash
 clear
 echo ""
-echo "### git-handler v1.1 ###"
+echo "### git-handler v1.2 ###"
 echo ""
 for i in "$@"
 do
@@ -18,6 +18,10 @@ do
 	    branch="${i#*=}"
 	    shift # past argument=value
 	    ;;
+	    -h=*|--home=*)
+	    branch="${i#*=}"
+	    shift # past argument=value
+	    ;;	    
 	    *)
 	            # unknown option
 	    ;;
@@ -31,9 +35,18 @@ if [ "$repo" == "" ] ; then
 	echo " -r, --repo [mandatory]: git repository"
 	echo " -d, --dir [optional]: directory to clone git repository"
 	echo " -b, --branch [optional, default: master]: branch to check out (and pull from)"
+	echo " -h, --homedir [optional, default: .]: home path to home /or working directory"
 	echo ""
 	exit 1
 fi
+
+# Checking home / working directory
+# otherwise setting it to default: .
+if [ "$homedir" == "" ] ; then
+	homedir="."
+fi
+cd $homedir
+pwd
 
 # Checking if branch was provided, 
 # otherwise setting it to default: master
@@ -50,6 +63,7 @@ fi
 
 echo "REPO: $repo"
 echo "DIR: $dir"
+echo "HOMEDIR: $homedir"
 echo "BRANCH: $branch"
 
 
