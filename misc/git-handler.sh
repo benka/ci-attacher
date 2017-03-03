@@ -18,8 +18,8 @@ do
 	    branch="${i#*=}"
 	    shift # past argument=value
 	    ;;
-	    -h=*|--home=*)
-	    branch="${i#*=}"
+	    -h=*|--homedir=*)
+	    homedir="${i#*=}"
 	    shift # past argument=value
 	    ;;	    
 	    *)
