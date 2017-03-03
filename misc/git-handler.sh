@@ -1,7 +1,7 @@
 #!/bin/bash
 clear
 echo ""
-echo "### git-handler v1.0 ###"
+echo "### git-handler v1.1 ###"
 echo ""
 for i in "$@"
 do
@@ -56,7 +56,8 @@ echo "BRANCH: $branch"
 # Cloning GIT repo
 git clone $repo $dir > /dev/null 2>&1
 success=$?
-if [ $success -neq 0 ] ; then
+
+if [ "$success" != "0" ] ; then
   echo "Repository is already cloned"
 fi
 
