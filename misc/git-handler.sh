@@ -101,6 +101,7 @@ cd $dir
 
 # Checkout and pull branch
 git checkout $branch
+git reset --hard && git clean -df
 git pull origin $branch
 
 if [ "$remote_name" != "" ] ; then
