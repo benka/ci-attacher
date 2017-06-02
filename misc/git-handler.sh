@@ -98,8 +98,10 @@ fi
 
 # Enter repo dir
 cd $dir
+echo "currently in dir (after clone) $(pwd)"
 
 # Checkout and pull branch
+git fetch origin
 git checkout $branch
 git reset --hard && git clean -df
 git pull origin $branch
