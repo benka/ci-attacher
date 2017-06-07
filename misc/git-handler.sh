@@ -1,7 +1,7 @@
 #!/bin/bash
 clear
 echo ""
-echo "### git-handler v1.3 ###"
+echo "### git-handler v1.4"
 echo ""
 for i in "$@"
 do
