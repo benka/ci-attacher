@@ -11,7 +11,7 @@ fi
 date=$(date +%Y-%m-%d_%H%M)
 echo $date
 
-instanceId=$(aws ec2 describe-instances --filters Name=tag-value,Values=$1::GoCD Name=instance-state-name,Values=running | grep InstanceId | awk '{print $2}' | tr -d '"' | tr -d ',')
+instanceId=$(aws ec2 describe-instances --filters Name=tag-value,Values=$1 Name=instance-state-name,Values=running | grep InstanceId | awk '{print $2}' | tr -d '"' | tr -d ',')
 
 echo $instanceId
 if [ "$instanceId" == "" ] ; then
