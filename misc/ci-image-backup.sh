@@ -12,6 +12,7 @@ date=$(date +%Y-%m-%d_%H%M)
 echo $date
 
 instanceId=$(aws ec2 describe-instances --filters Name=tag-value,Values=$1 Name=instance-state-name,Values=running | grep InstanceId | awk '{print $2}' | tr -d '"' | tr -d ',')
+project=cut -d':' -f1 <<< $1
 
 echo $instanceId
 if [ "$instanceId" == "" ] ; then
@@ -20,5 +21,5 @@ if [ "$instanceId" == "" ] ; then
   exit 1
 fi
 
-aws ec2 create-image --instance-id $instanceId --name "$1 GoCD backup $date" --no-reboot > ami-id.log
+aws ec2 create-image --instance-id $instanceId --name "$project GoCD backup $date" --no-reboot > ami-id.log
 
