@@ -40,7 +40,7 @@ else
   echo ".using keyword: $keyword"
 fi
 
-count=$(grep -c $keyword $logfile)
+count=$(grep -c -i $keyword $logfile)
 
 if [ "$count" != "0" ] ; then
   echo ".keyword $keyword found: $count time(s)"
